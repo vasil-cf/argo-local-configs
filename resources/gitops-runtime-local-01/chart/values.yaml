@@ -40,8 +40,7 @@ gitops-runtime:
   global:
     codefresh:
       accountId: 65fd8b1ef5cbfe5d6859f13b
-      url: http://localhost:3017
-      url1: https://vasil-platform.ngrok.io
+      url: https://vasil-platform.ngrok.io
       userToken:
         secretKeyRef:
           name: codefresh-user-token
