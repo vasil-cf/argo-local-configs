@@ -1,0 +1,22 @@
+gitops-runtime:
+  app-proxy:
+    config:
+      cors: http://local.codefresh.io
+  global:
+    codefresh:
+      accountId: 65fd8b1ef5cbfe5d6859f13b
+      url: https://vasil-platform.ngrok.io
+      userToken:
+        secretKeyRef:
+          name: codefresh-user-token
+          key: token
+    runtime:
+      ingress:
+        className: nginx-public
+        enabled: true
+        hosts:
+          - vasil-local.rnd.sandbox.codefresh.io
+        protocol: https
+      name: gitops-runtime-local-01
+  installer:
+    skipValidation: true
