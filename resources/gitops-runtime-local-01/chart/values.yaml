@@ -1,7 +1,42 @@
 gitops-runtime:
   app-proxy:
+    replicaCount: 1
     config:
       cors: http://local.codefresh.io
+      argoCdUrl: http://argo-cd-server:80/argocd # /argocd path
+  argo-cd:
+    extraObjects:
+      - apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          annotations:
+            nginx.ingress.kubernetes.io/backend-protocol: HTTP
+          name: argocd-server
+        spec:
+          ingressClassName: nginx-public
+          rules:
+            - host: vasil-local.rnd.sandbox.codefresh.io
+              http:
+                paths:
+                  - backend:
+                      service:
+                        name: argo-cd-server
+                        port:
+                          number: 80
+                    path: /argocd
+                    pathType: Prefix
+    configs:
+      params:
+        server.basehref: /argocd # /argocd path
+        server.rootpath: /argocd # /argocd path
+    eventReporter:
+      enabled: "true"      
+  event-reporters:
+    events:
+      argoCDServerServicePort: 80/argocd
+  gitops-operator:
+    env:
+      ARGO_CD_URL: argo-cd-server:80/argocd # /argocd path
   global:
     codefresh:
       accountId: 65fd8b1ef5cbfe5d6859f13b
