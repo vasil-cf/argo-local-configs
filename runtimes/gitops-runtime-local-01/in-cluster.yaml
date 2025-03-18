@@ -15,7 +15,7 @@ spec:
   source:
     directory:
       include: >-
-        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,configurations/**/*.yaml,control-planes/**/*.yaml,control-planes/*.yaml,gitops-runtime-local-01/cf-gitops-runtime.yaml,gitops-runtime-local-01/local-git-source1.yaml,runtimes/gitops-runtime-local-01/**/*.yaml,runtimes/gitops-runtime-local-01/*.yaml}
+        {all-runtimes-all-clusters/**/*.yaml,all-runtimes-all-clusters/*.yaml,control-planes/**/*.yaml,control-planes/*.yaml,gitops-runtime-local-01/cf-gitops-runtime.yaml,gitops-runtime-local-01/local-git-source1.yaml,runtimes/gitops-runtime-local-01/**/*.yaml,runtimes/gitops-runtime-local-01/*.yaml}
       recurse: true
     path: resources
     repoURL: https://github.com/vasil-cf/argo-local-configs.git
